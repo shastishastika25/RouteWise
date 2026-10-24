@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Agriculture System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef7e9;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .container {
+            background: white;
+            max-width: 450px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px #cccccc;
+        }
+
+        input, button {
+            padding: 12px;
+            margin: 10px;
+            width: 80%;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #218838;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #result {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>🌱 Smart Agriculture</h1>
+        <p>Enter Soil Moisture Percentage</p>
+
+        <input
+            type="number"
+            id="moisture"
+            min="0"
+            max="100"
+            placeholder="Example: 25"
+        >
+
+        <br>
+
+        <button onclick="checkMoisture()">
+            Check Soil Condition
+        </button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkMoisture() {
+            const value = document.getElementById("moisture").value;
+            const result = document.getElementById("result");
+
+            if (value === "" || Number(value) < 0 ||
+                Number(value) > 100) {
+                result.textContent =
+                    "Enter a value between 0 and 100.";
+                return;
+            }
+
+            const moisture = Number(value);
+
+            if (moisture < 30) {
+                result.textContent =
+                    "Soil is dry. Irrigation may be needed.";
+            } else if (moisture < 60) {
+                result.textContent =
+                    "Moderate moisture. Monitor the soil.";
+            } else {
+                result.textContent =
+                    "Soil moisture is high. Check before watering.";
+            }
+        }
+    </script>
+
+</body>
+</html>
